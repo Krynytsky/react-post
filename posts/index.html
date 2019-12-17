@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Hello World</title>
+  <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+
+  <!-- Don't use this in production: -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+<!--<div class="post">-->
+<!--    <div class="userElem">-->
+<!--      <img class="user-icon" src="/img/me.jpg" alt="user-icon" role="img">-->
+<!--      <h2 class="user-name">Yuri Krynytsky</h2>-->
+<!--    </div>-->
+<!--    <div class="post-text">-->
+<!--      Lorem ipsum dolor sit amet,-->
+<!--      consectetur adipisicing elit. Aperiam consectetur-->
+<!--      dignissimos expedita in, nam officia officiis repudiandae-->
+<!--      tempore. Assumenda consequatur ea eaque, magnam magni-->
+<!--      perspiciatis tempora ullam veniam veritatis voluptatem!</div>-->
+<!--    <div class="date">Date:</div>-->
+<!--  </div>-->
+
+<!--<div class="post">-->
+<!--  <div class="userElem">-->
+<!--    <img class="user-icon" src="/img/me.jpg" alt="user-icon" role="img">-->
+<!--    <h2 class="user-name">Yuri Krynytsky</h2>-->
+<!--  </div>-->
+<!--  <div class="post-img">-->
+<!--    <img src="/img/post.png" alt="react is cool">-->
+<!--  </div>-->
+<!--  <div class="date">Date:</div>-->
+<!--</div>-->
+
+<div id="root"></div>
+
+
+
+<script type="text/babel">
+
+  const userElem =(
+          <div className="post">
+            <div className="userElem">
+              <img className="user-icon" src="/img/me.jpg" alt="user-icon" role="img"/>
+                <h2 className="user-name">Yuri Krynytsky</h2>
+            </div>
+            <div className="post-text">
+              Lorem ipsum dolor sit amet,
+              veritatis voluptatem!
+            </div>
+            <div className="date">Date:</div>
+          </div>);
+
+            ReactDOM.render(userElem,document.getElementById('root'));
+
+</script>
+
+</body>
+</html>

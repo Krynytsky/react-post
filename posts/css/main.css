@@ -1,0 +1,34 @@
+body{
+    background-color: #E9EBEE;
+}
+
+.post{
+    margin-bottom: 1em;
+    background-color: #FFFFFF;
+    max-width: 500px;
+    line-height: 1.5;
+    border: 1px solid ;
+    border-radius: 15px;
+    padding-left: 1em;
+
+}
+.post-img > img{
+    max-width: 450px;
+    max-height: 450px;
+}
+
+.userElem{
+    display: flex;
+    padding-top: 1em;
+    padding-right: 1em;
+}
+
+.user-icon{
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+}
+
+.user-name{
+    padding-left: 1em;
+}
