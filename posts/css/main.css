@@ -4,17 +4,21 @@ body{
 
 .post{
     margin-bottom: 1em;
+    padding-left: 1em;
     background-color: #FFFFFF;
     max-width: 500px;
     line-height: 1.5;
     border: 1px solid ;
     border-radius: 15px;
-    padding-left: 1em;
-
 }
-.post-img > img{
-    max-width: 450px;
-    max-height: 450px;
+.post-content{
+    padding-left: 4em;
+    padding-right: 2em;
+    padding-bottom: 2em;
+}
+.post-img{
+    max-width: 400px;
+    max-height: 400px;
 }
 
 .userElem{
@@ -31,4 +35,23 @@ body{
 
 .user-name{
     padding-left: 1em;
+    font-size: 18px;
+    font-weight: bold;
 }
+.date{
+    font-size: 12px;
+}
+.toUppercace{
+    text-transform: uppercase;
+}
+.closePost{
+    background-color:  #E9EBEE;
+    margin-bottom: 1em;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 15px;
+}
+.closePost:hover{
+    background-color: red;
+}
+
