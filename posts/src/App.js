@@ -1,7 +1,8 @@
 const Fragment = React.Fragment;
+
 //data layer
 let loaded = false;
-let post1IsClosed = true;
+let post1IsClosed = false;
 let post2IsClosed = false;
 const post1 = {
     name : "Yuri Prubylskiy",
@@ -19,13 +20,20 @@ const post2 = {
 };
 
 //UI layer
+const Loader = () => {
+    return(
+        <Fragment>
+            <h1>Pleace wait!The page is loading...</h1>
+        </Fragment>)
+};
 const PostImg = props => {
     const {src} = props;
     return src && <img className="post-img" src={src} alt="post-img"/>
 };
 const Post = props => {
-    const {post} = props;
-    return(
+    console.log(props);
+    const {post,isClosed,onCloseRequest} = props;
+    return isClosed || (
         <div className="post">
             <div className="userElem">
                 <img className="user-icon" src={post.userIcon} alt="user-icon" role="img"/>
@@ -37,59 +45,56 @@ const Post = props => {
             </div>
             <div className="date">
                 <p>Published:{post.date}</p>
-                <ClosePost/>
+            </div>
+            <div className="close">
+                {/*<Fragment>*/}
+                {/*    <ClosePost/>*/}
+                {/*</Fragment>*/}
+                <button className={"closePost"} onClick={onCloseRequest}>Close</button>
             </div>
         </div>
     );
 };
-const ClosePost = props =>{
-   return (<Fragment>
-        <button className={"closePost"}>Close post</button>
-    </Fragment>);
-};
+// const ClosePost = props =>{
+//     const{onCloseRequest}=props;
+//    return (
+//         <button className="closePost" onClick={onCloseRequest}>Close</button>);
+// };
 const App = props => {
-    const{loaded,post1,post2,post1IsClosed,post2IsClosed}= props.data;
+    console.log('AppProps', props);
+    const{loaded,post1,post2,post1IsClosed,
+          post2IsClosed,closePost1,closePost2}= props.data;
     return ( loaded ?
         <Fragment>
-            { post1IsClosed || <Post post={post1}/>}
-            {post2IsClosed || <Post post={post2}/>}
-        </Fragment>: <Loader/>);
+            <Post post={post1} isClosed={post1IsClosed} onCloseRequest={closePost1}/>
+            <Post post={post2} isClosed={post2IsClosed} onCloseRequest={closePost2}/>
+        </Fragment>:
+        <Loader/>);
 };
-const Loader = () => {
-    return(
-        <Fragment>
-            <h1>Pleace wait!The page is loading...</h1>
-        </Fragment>)
-};
-
-
 const renderUI = () => {
-    ReactDOM.render(<App data={{loaded,post1,post2,post1IsClosed,post2IsClosed}}/>, document.getElementById('root'));
+    ReactDOM.render(<App data={{loaded,post1,post2,post1IsClosed,post2IsClosed,
+        closePost1,closePost2}}/>, document.getElementById('root'));
 }
 
-
 //logic layer
-
 renderUI();
-//show UI with 4sec timeout
+const closePost1 = () =>{
+    post1IsClosed = true;
+    renderUI();
+}
+
+const closePost2 = () => {
+    post2IsClosed = true;
+    renderUI();
+}
+
 setTimeout(() => {
     loaded = true;
     renderUI();
-},1000);
+},2000);
 
-// setTimeout(()=>{
-//     loaded = true;
-//     if(loaded !== false){
-//         ReactDOM.render(
-//             <Fragment>
-//                 <Post post = {post1}/>
-//             </Fragment>
-//             ,document.getElementById('root'));}
-//     else{
-//         ReactDOM.render(
-//             <Fragment>
-//                 <p>loading..</p>
-//             </Fragment>
-//             ,document.getElementById('root'));
-//     }
-// },7000);
+// setInterval(()=>{
+//     post1IsClosed = false;
+//     post2IsClosed = false;
+//     renderUI();
+// },5000);
